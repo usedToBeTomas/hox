@@ -1,12 +1,11 @@
-import hox
-import gzip
+from hox import *
+import hox.utils as utils
 
 #Create model
 model = Model.create([Dense(784, 144, Relu()), Dense(144, 10, Sigmoid())])
 
 #Upload mnist dataset
-X = (np.frombuffer(gzip.open("train-images-idx3-ubyte.gz", "rb").read(), dtype=np.uint8)[16:].reshape((-1, 784)) / 255).astype(np.float32)
-Y = (np.eye(10)[np.frombuffer(gzip.open("train-labels-idx1-ubyte.gz", "rb").read(), dtype=np.uint8)[8:]]).astype(np.float32)
+X, Y, x, y = utils.mnist()
 
 #Train the model
 rate = 1

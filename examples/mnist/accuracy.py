@@ -1,16 +1,15 @@
-import hox
-import gzip
+from hox import *
+import hox.utils as utils
 
-#Define neural network model
+#Load model
 model = Model.load("mnist")
 
-#Upload mnist test dataset
-X = np.frombuffer(gzip.open("t10k-images-idx3-ubyte.gz", "rb").read(), dtype=np.uint8)[16:].reshape((-1, 784)) / 255
-Y = np.frombuffer(gzip.open("t10k-labels-idx1-ubyte.gz", "rb").read(), dtype=np.uint8)[8:]
+#Upload mnist dataset
+X, Y, x, y = utils.mnist()
 
 #Accuracy test
 counter = 0
-for i in range(len(X)):
-    if np.argmax(model.run(X[i])) == Y[i]:
+for i in range(len(x)):
+    if np.argmax(model.run(x[i])) == y[i]:
         counter +=1
-print(str((counter*100)/len(Y)) + "% accuracy")
+print(str((counter*100)/len(y)) + "% accuracy")
