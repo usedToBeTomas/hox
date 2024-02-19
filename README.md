@@ -4,7 +4,7 @@
 
 
 ## examples/mnist
-Mnist training, you have the option to utilize the high-level utils package for handling the training loop. Alternatively, you can choose to construct your own training loop using the low-level functions provided in hox. An example demonstrating low-level Mnist training can be found in the examples/mnist folder.
+The code snippet down below shows mnist training script using the high-level utils package for handling the training loop. Alternatively, you can choose to construct your own training loop using the low-level functions provided in hox. An example demonstrating low-level Mnist training can be found in the examples/mnist folder.
 ```python
 from hox import *
 import hox.utils as utils
