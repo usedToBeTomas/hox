@@ -7,7 +7,7 @@ model = Model.create([Dense(784, 144, Relu()), Dense(144, 10, Sigmoid())])
 #Upload mnist dataset
 X, Y, x, y = utils.mnist()
 
-#Train the model
+#Low-level training loop
 rate = 1
 batch_size = 32
 epochs = 2
