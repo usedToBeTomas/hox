@@ -16,7 +16,7 @@ from hox import *
 import utils
 
 #Create model (2 layers, 784 input neurons, 144 first layer, 10 output layer)
-model = Model.create([Dense(784, 144, Relu()), Dense(144, 10, Sigmoid())])
+model = Model.create([Layer(784, 144, Relu()), Layer(144, 10, Sigmoid())])
 
 #Upload mnist dataset
 X, Y, x, y = utils.mnist()
