@@ -15,6 +15,7 @@ Training is executed on the cpu (singlethread), on a 12600k it can train mnist i
     <img src="mnist_train.gif" width="65%"/><br>
 </div>
 The code snippet down below shows mnist training. The utils module used to load mnist is not directly installed with hox, you can find it in this github repo at examples/mnist
+
 ```python
 from hox import *
 import utils
