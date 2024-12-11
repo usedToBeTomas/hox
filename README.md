@@ -12,7 +12,7 @@ pip install hox
 ## examples/mnist
 Training is executed on the cpu (singlethread), on a 12600k it can train mnist in 1 epoch at ~96% accuracy in ~4 seconds.
 <div align="center">
-    <img src="mnist_train.gif" width="65%"/><br>
+    <img src="mnist_train2.gif" width="65%"/><br>
 </div>
 The code snippet down below shows mnist training. The utils module used to load mnist is not directly installed with hox, you can find it in this github repo at examples/mnist
 
