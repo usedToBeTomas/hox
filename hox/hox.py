@@ -1,20 +1,21 @@
 import numpy as np
 import pickle
 from tqdm import tqdm
+ZERO, UNO = np.float32(0), np.float32(1)
 
 class Sigmoid():
     def forward(self, x):
-        return np.divide(np.float32(1), (np.float32(1) + np.exp(-x)))
+        return np.divide(UNO, (UNO + np.exp(-x)))
     def backward(self, layer_output, delta):
-        return np.multiply(delta, np.multiply(layer_output, (np.float32(1) - layer_output)))
+        return delta * layer_output * (UNO - layer_output)
     def initialize(self, neurons, input_neurons):
         return np.random.uniform(low=-0.1, high=0.1, size=(neurons, input_neurons)).astype(np.float32)
 
 class Relu():
     def forward(self, x):
-        return np.maximum(x, np.float32(0))
+        return np.maximum(x, ZERO)
     def backward(self, layer_output, delta):
-        return np.multiply(delta, (layer_output > np.float32(0)))
+        return np.multiply(delta, (layer_output > ZERO))
     def initialize(self, neurons, input_neurons):
         return np.random.normal(loc=0, scale=np.sqrt(2 / input_neurons), size=(neurons, input_neurons)).astype(np.float32)
 
@@ -30,7 +31,7 @@ class Layer():
 
     def backward(self, delta):
         delta = self.activation.backward(self.output, delta)
-        self.grad_weights += np.outer(delta, self.input)
+        self.grad_weights += np.einsum('i,j->ij', delta, self.input)
         self.grad_biases += delta
         return np.dot(self.weights.T, delta)
 
