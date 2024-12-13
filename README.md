@@ -10,12 +10,7 @@ pip install hox
 ---
 
 ## examples/mnist
-Training is executed on the cpu (singlethread), on a 12600k it can train mnist in 1 epoch at ~96% accuracy in ~4 seconds.
-<div align="center">
-    <img src="mnist_train2.gif" width="65%"/><br>
-</div>
-The code snippet down below shows mnist training. The utils module used to load mnist is not directly installed with hox, you can find it in this github repo at examples/mnist
-
+### train.py
 ```python
 from hox import *
 import utils
@@ -36,7 +31,7 @@ model.train(X, Y, epochs = 1, rate = 2, batch_size = 16)
 #Save the trained model
 model.save("mnist")
 ```
-The code snippet down below shows an accuracy test for the model we just trained.
+### accuracy.py
 ```python
 from hox import *
 import utils
